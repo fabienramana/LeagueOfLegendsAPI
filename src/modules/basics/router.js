@@ -1,10 +1,13 @@
 const { Router } = require('express');
-const basicsRouter = require('../modules/basics/router');
 
 const router = new Router();
 
 // Service  API
-router.use(basicsRouter);
 
+router.use('/ping', (req, res) => {
+  res.send({
+    ping: 'pong',
+  });
+});
 
 module.exports = router;
