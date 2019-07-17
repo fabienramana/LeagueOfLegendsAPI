@@ -18,6 +18,7 @@ router.use('/lol', (req, res) => {
     method: 'GET',
     timeout: 10000,
   }, (error, response, body) => {
+    res.setHeader('Content-Type', 'application/json');
     res.send(body);
   });
 });
