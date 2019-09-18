@@ -3,12 +3,10 @@ const updateOne = require('../services/updateOne');
 
 module.exports = (req, res, next) => {
   const userToUpdate = req.body;
-  const { userId } = req.params;
 
   const userWhoRequested = decodeToken(req);
-  if (userWhoRequested._id === userId // eslint-disable-line no-underscore-dangle
-    || userWhoRequested.isAdministrator === 1) {
-    updateOne(userId, userToUpdate)
+  if (typeof userWhoRequested._id !== 'undefined') { // eslint-disable-line no-underscore-dangle
+    updateOne(userWhoRequested._id, userToUpdate) // eslint-disable-line no-underscore-dangle
       .then((updatedUser) => {
         res.json(updatedUser);
       })

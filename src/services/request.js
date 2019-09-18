@@ -8,7 +8,7 @@ function getRoute(url) {
       method: 'GET',
       timeout: 10000,
       headers: {
-        'X-Riot-Token': config.get('api_key'),
+        Authorization: config.get('api_key'),
       },
     }, (error, response, body) => {
       const responseJson = JSON.parse(body);

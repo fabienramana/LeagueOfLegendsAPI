@@ -14,7 +14,16 @@ const updateModel = joi.object().keys({
   lastName: joi.string(),
 });
 
+const createModelAdmin = joi.object().keys({
+  password: joi.string(),
+  email: joi.string(),
+  firstName: joi.string(),
+  lastName: joi.string(),
+  isAdministrator: joi.number(),
+});
+
 module.exports = {
   createModel,
   updateModel,
+  createModelAdmin,
 };

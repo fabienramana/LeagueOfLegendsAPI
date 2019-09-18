@@ -2,11 +2,9 @@ const decodeToken = require('../../../services/decodeToken');
 const findOneById = require('../services/findOneById');
 
 module.exports = (req, res, next) => {
-  const { userId } = req.params;
   const userWhoRequested = decodeToken(req);
-  if (userWhoRequested._id === userId // eslint-disable-line no-underscore-dangle
-    || userWhoRequested.isAdministrator === 1) {
-    findOneById(userId)
+  if (typeof userWhoRequested._id !== 'undefined') { // eslint-disable-line no-underscore-dangle
+    findOneById(userWhoRequested._id) // eslint-disable-line no-underscore-dangle
       .then((user) => {
         res.json(user);
       })
