@@ -20,6 +20,7 @@ function getRoute(url) {
   }));
 }
 
+
 module.exports = {
   getRoute,
 };
