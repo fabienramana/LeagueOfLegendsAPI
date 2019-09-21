@@ -1,6 +1,7 @@
 const { ObjectId } = require('mongodb');
 const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
+const deleteUserPrivateKeys = require('../../../helpers/deleteUserPrivateKeys');
 
 module.exports = (id) => {
   return connect()
@@ -8,7 +9,7 @@ module.exports = (id) => {
     .then(collection => collection.findOne({ _id: ObjectId(id) }))
     .then((dbResponse) => {
       if (dbResponse) {
-        return dbResponse;
+        return deleteUserPrivateKeys(dbResponse);
       }
 
       const err = new Error(`User not found for id: ${id}`);
