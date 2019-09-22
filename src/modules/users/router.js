@@ -9,6 +9,7 @@ const showMyInformations = require('./middleware/showMyInformations');
 const createAdmin = require('./middleware/createAdmin');
 const updateMyself = require('./middleware/updateMyself');
 const deleteMyself = require('./middleware/deleteMyself');
+const setAdmin = require('./middleware/setAdmin');
 const assignToken = require('../../services/assignToken');
 const verifyToken = require('../../services/verifyToken');
 
@@ -42,5 +43,8 @@ router.route('/users/:userId')
 
 router.route('/users')
   .get(find);
+
+router.route('/admin/droits-admin/user/:userId')
+  .post(setAdmin);
 
 module.exports = router;

@@ -4,7 +4,5 @@ const collections = require('../../../enums/collections');
 module.exports = (userId) => {
   return connect()
     .then(db => db.collection(collections.FAVORITES))
-    .then(collection => collection.find({ userId }))
-    .then(cursor => cursor.toArray());
-  // Renvoyer empty si vide
+    .then(collection => collection.deleteMany({ userId }));
 };

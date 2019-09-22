@@ -1,9 +1,11 @@
 const { ObjectId } = require('mongodb');
 const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
+const deleteFavoritesByUser = require('../../leagueOfLegends/services/deleteFavoritesByUser');
 
 module.exports = (userId) => {
-  return connect()
+  return deleteFavoritesByUser(userId)
+    .then(connect)
     .then(db => db.collection(collections.USERS))
     .then(collection => collection.deleteOne({ _id: ObjectId(userId) }))
     .then((dbResponse) => {

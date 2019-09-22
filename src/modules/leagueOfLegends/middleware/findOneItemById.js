@@ -1,4 +1,4 @@
-const findOneById = require('../services/findOneById');
+const findOneById = require('../services/findOneItemById');
 
 module.exports = (req, res, next) => {
   const { itemId } = req.params;

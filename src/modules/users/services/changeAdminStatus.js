@@ -2,10 +2,10 @@ const { ObjectId } = require('mongodb');
 const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
 const findOne = require('./findOneById');
-const { updateModel } = require('../model');
+const { modelAdmin } = require('../model');
 
 module.exports = (userId, userToUpdate) => {
-  return updateModel.validate(userToUpdate)
+  return modelAdmin.validate(userToUpdate)
     .then(() => connect())
     .then(db => db.collection(collections.USERS))
     .then(collection => collection.updateOne({
