@@ -1,0 +1,290 @@
+swagger: "2.0"
+info :
+ version: "1.0.0"
+ title: "league of legends"
+host: "localhost:3000"
+basePath: "/api"
+schemes:
+- http
+paths:
+ "/users":
+   post:
+     parameters:
+      - name: user
+        in: body
+        schema:
+          $ref: '#/definition/UserCreation'
+     summary: create user
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+   get:
+     parameters:
+      - name: user
+        in: body
+        schema:
+          $ref: '#/definition/UserCreation'
+     summary: display all users
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/login":
+   post:
+     parameters:
+      - name: user
+        in: body
+        schema:
+          $ref: '#/definition/User'
+     summary: connect user
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/users/create-admin":
+   post:
+     parameters:
+      - name: user
+        in: body
+        schema:
+          $ref: '#/definition/AdminCreation'
+     summary: create admin
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/users/my-infos":
+   get:
+     
+     summary: get user information
+     responses:
+       200:
+         description: OK
+       403:
+         description: 'Unauthorized'
+ "/users/modifier":
+   post:
+     parameters:
+      - name: user
+        in: body
+        schema:
+          $ref: '#/definition/UserUpdate'
+     summary: update my profile
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/users/desactiver":
+   delete:
+     tags:
+      - Users
+     summary: delete my profile
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/users/:userId":
+   get:
+     tags:
+      - Users
+     summary: find by id
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+   patch:
+     tags:
+      - Users
+     summary: update
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+   delete:
+     tags:
+      - Users
+     summary: delete by id
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+ "/admin/droits/user/:userId":
+   delete:
+     summary: Set/Unset admin for other users
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+         
+         
+ "/api/list":
+    get:
+      summary: display list
+      responses:
+        200:
+          description: OK
+        404:
+          description: error
+ "/api/item/:itemId":     
+    get:
+      tags:
+      - Favorites
+      summary: find by id
+      responses:
+        200:
+          description: OK
+        404:
+          description: error
+ "/api/user/:userId/item/:itemId"  :
+    post:
+      tags:
+      - Favorites
+      parameters:
+      - name: ItemId
+        in: body
+        schema:
+          $ref: '#/definition/AddItem'
+      summary: add Item
+      responses:
+        200:
+          description: OK
+          
+        404:
+          description: error
+          
+ "/api/favoris/liste":
+    
+    get:
+      parameters:
+      - name: ItemId
+        in: body
+        schema:
+          $ref: '#/definition/FindFavorite' 
+      summary: find favorites
+      responses:
+        200:
+          description: OK
+        404:
+          description: error
+ "/api/favoris/:_id":
+   get:
+     tags:
+      - Favorites
+     parameters:
+      - name: ItemId
+        in: body
+        schema:
+          $ref: '#/definition/FindFavorite' 
+     summary: find favorite by id
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+   delete:
+     summary: delete your favorite by id
+     responses:
+       200:
+         description: OK
+       404:
+         description: error
+          
+definition:
+  User:
+    type: object
+    properties:
+      "_id":
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+        format: email
+  
+  UserCreation:
+    type: object
+    required:
+    - password
+    - email
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      
+      email:
+        type: string
+        format: email  
+      password:
+        type: string 
+        
+  AdminCreation:
+    type: object
+    required:
+    - password
+    - email
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      
+      email:
+        type: string
+        format: email  
+      password:
+        type: string  
+        
+      isAdministrator: int  
+  UserUpdate:
+    type: object
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+        format: email
+      password:
+        type: string    
+       
+   
+  AddItem:
+    type: object
+    required:
+    - itemId
+    - name
+    - userId
+    properties:
+      itemId:
+        type: string
+      name:
+        type: string
+      userId:
+        type: string
+  
+  FindFavorite:
+    type: object
+    required:
+    - itemId
+    - userId
+    properties:
+      itemId:
+        type: string
+      
+      userId:
+        type: string      
