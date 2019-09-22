@@ -31,7 +31,7 @@ router.route('/my-infos')
   .get(showMyInformations);
 
 router.route('/users/modifier')
-  .post(updateMyself);
+  .patch(updateMyself);
 
 router.route('/users/desactiver')
   .delete(deleteMyself);
@@ -45,6 +45,6 @@ router.route('/users')
   .get(find);
 
 router.route('/admin/droits/user/:userId')
-  .post(setAdmin);
+  .patch(setAdmin);
 
 module.exports = router;
