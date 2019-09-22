@@ -7,7 +7,6 @@ const router = new Router();
 
 // Service  API
 router.use('/api', basicsRouter);
-// router.use('/api', usersRouter);
 router.use('/api', usersRouter);
 router.use('/api', lolRouter);
 

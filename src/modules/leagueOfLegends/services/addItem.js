@@ -1,4 +1,3 @@
-// const { createModel } = require('../model');
 const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
 const findIfFavoriteExists = require('./findIfFavoriteExists');

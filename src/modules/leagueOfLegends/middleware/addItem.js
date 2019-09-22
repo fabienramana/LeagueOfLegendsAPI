@@ -1,8 +1,6 @@
 const addItem = require('../services/addItem');
 const { getRoute } = require('../../../services/request');
 const decodeToken = require('../../../services/decodeToken');
-// const { getRoute } = require('../../../services/request');
-// const findOneById = require('../services/findOneById');
 
 
 module.exports = (req, res, next) => {

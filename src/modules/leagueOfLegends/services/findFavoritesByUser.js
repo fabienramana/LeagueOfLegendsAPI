@@ -6,5 +6,4 @@ module.exports = (userId) => {
     .then(db => db.collection(collections.FAVORITES))
     .then(collection => collection.find({ userId }))
     .then(cursor => cursor.toArray());
-  // Renvoyer empty si vide
 };
