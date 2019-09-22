@@ -24,17 +24,17 @@ router.route('/item/:itemId')
 router.route('/user/:userId/item/:itemId')
   .post(addItem);
 
-router.route('/favoris/liste')
+router.route('/favorites/list')
   .get(findFavorites);
 
-router.route('/users/:userId/favoris/liste')
+router.route('/users/:userId/favorites/list')
   .get(findFavoritesByUser);
 
-router.route('/users/:userId/favoris/:_id')
+router.route('/users/:userId/favorite/:_id')
   .get(findOneFavoriteByIdAndUser)
   .delete(deleteOneFavoriteByIdAndUser);
 
-router.route('/favoris/:_id')
+router.route('/favorite/:_id')
   .get(findOneFavoriteById)
   .delete(deleteOneFavoriteById);
 

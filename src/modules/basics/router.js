@@ -4,7 +4,7 @@ const router = new Router();
 
 // Service  API
 
-router.use('/ping', (req, res) => {
+router.get('/ping', (req, res) => {
   res.send({
     ping: 'pong',
   });
