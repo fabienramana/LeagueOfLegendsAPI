@@ -14,27 +14,27 @@ const router = new Router();
 
 // Service  API
 
-router.route('/api/list')
+router.route('/items/list')
   .get(displayItems);
 
-router.route('/api/item/:itemId')
+router.route('/item/:itemId')
   .get(findOneById)
   .post(addMyItem);
 
-router.route('/api/user/:userId/item/:itemId')
+router.route('/user/:userId/item/:itemId')
   .post(addItem);
 
-router.route('/api/favoris/liste')
+router.route('/favoris/liste')
   .get(findFavorites);
 
-router.route('/api/users/:userId/favoris/liste')
+router.route('/users/:userId/favoris/liste')
   .get(findFavoritesByUser);
 
-router.route('/api/users/:userId/favoris/:_id')
+router.route('/users/:userId/favoris/:_id')
   .get(findOneFavoriteByIdAndUser)
   .delete(deleteOneFavoriteByIdAndUser);
 
-router.route('/api/favoris/:_id')
+router.route('/favoris/:_id')
   .get(findOneFavoriteById)
   .delete(deleteOneFavoriteById);
 

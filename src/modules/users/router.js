@@ -18,16 +18,16 @@ const router = new Router();
 router.route('/users')
   .post(createOne);
 
-router.route('/api/login')
+router.route('/login')
   .post(login);
 
-router.route('/users/create-admin')
+router.route('/create-admin')
   .post(createAdmin);
 
 router.use(assignToken);
 router.use(verifyToken);
 
-router.route('/users/my-infos')
+router.route('/my-infos')
   .get(showMyInformations);
 
 router.route('/users/modifier')
@@ -44,7 +44,7 @@ router.route('/users/:userId')
 router.route('/users')
   .get(find);
 
-router.route('/admin/droits-admin/user/:userId')
+router.route('/admin/droits/user/:userId')
   .post(setAdmin);
 
 module.exports = router;

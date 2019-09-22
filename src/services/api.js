@@ -6,9 +6,9 @@ const lolRouter = require('../modules/leagueOfLegends/router');
 const router = new Router();
 
 // Service  API
-router.use(basicsRouter);
+router.use('/api', basicsRouter);
 // router.use('/api', usersRouter);
-router.use(usersRouter);
-router.use(lolRouter);
+router.use('/api', usersRouter);
+router.use('/api', lolRouter);
 
 module.exports = router;

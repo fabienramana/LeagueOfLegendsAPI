@@ -26,19 +26,3 @@ module.exports = (req, res, next) => {
     });
   }
 };
-
-/* Can also be write like the
-  return model.validate(listToCreate, model)
-    .then(() => {
-      return connect()
-    })
-    .then((db) => {
-      return db.collection(collections.LISTS)
-    })
-    .then((collection) => {
-      return collection.insertOne(listToCreate)
-    })
-    .then((dbResponse) => {
-      return dbResponse.ops[0]
-    });
-  */
